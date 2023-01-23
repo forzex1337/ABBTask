@@ -27,8 +27,8 @@ namespace ABBTask.Tests
             {
                 ExpirationDateFrom = null,
                 ExpirationDateTo = null,
-                PriceFrom = 0,
-                PriceTo = double.MaxValue
+                PriceFrom = double.MinValue,
+                PriceTo = double.MinValue
             };
 
             // Act
@@ -88,6 +88,8 @@ namespace ABBTask.Tests
 
                 estates = context.Estates.ToList();
             }
+
+            var estatesInd = estates.Where(x => x.ExpirationDate >= expirationDateFrom && x.ExpirationDate <= expirationDateTo).ToList();
 
             // Assert
 

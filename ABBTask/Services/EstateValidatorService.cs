@@ -16,7 +16,7 @@ namespace ABBTask.Services
         public void ValidateFilterEstate(FilterEstate filter)
         {
             if ((string.IsNullOrWhiteSpace(filter.ExpirationDateFrom) || string.IsNullOrWhiteSpace(filter.ExpirationDateTo))
-                && filter.PriceFrom == 0 && filter.PriceTo == double.MaxValue)
+                && filter.PriceFrom == double.MinValue && filter.PriceTo == double.MinValue)
                 throw new Exception("At least one property of FilterEstate must have a value");
             if (!RightDateFormat(filter.ExpirationDateFrom) || !RightDateFormat(filter.ExpirationDateTo))
                 throw new Exception($"Incorrect date format ExpirationDateFrom : {filter.ExpirationDateFrom} ExpirationDateTo {filter.ExpirationDateTo}");
